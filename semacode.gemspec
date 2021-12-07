@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |s| 
   s.name = "semacode"
-  s.version = "0.7.5"
+  s.version = "0.7.5.1"
   s.author = "Guido Sohne"
   s.email = "guido@sohne.net"
   s.homepage = "http://sohne.net/projects/semafox/"
