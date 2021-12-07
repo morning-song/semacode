@@ -32,6 +32,5 @@ DESC
   s.require_path = "lib"
   s.autorequire = "semacode"
   s.test_files = Dir["{tests}/**/*test.rb"]
-  s.has_rdoc = true
   s.extra_rdoc_files = ["README"]
 end
