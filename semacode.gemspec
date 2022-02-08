@@ -1,15 +1,15 @@
-# require 'rubygems'
-# require 'rake/gempackagetask'
+require_relative 'semantic'
 
-Gem::Specification.new do |s| 
+Gem::Specification.new do |s|
   s.name = "semacode"
-  s.version = "0.7.5.1"
-  s.author = "Guido Sohne"
-  s.email = "guido@sohne.net"
+  s.version = Semantic::VERSION
+  s.author = "Guido Sohne, Seth MacPherson"
+  s.email = "guido@sohne.net, seth.macpherson@gmail.com"
   s.homepage = "http://sohne.net/projects/semafox/"
   s.platform = Gem::Platform::RUBY
   s.summary = "Create semacodes (2D barcodes) using Ruby."
   s.rubyforge_project = "semacode"
+  s.license = 'MIT'
   s.description = <<DESC
   This Ruby extension implements a DataMatrix encoder for Ruby. It is typically
   used to create semacodes, which are barcodes, that contain URLs. This encoder
@@ -21,16 +21,8 @@ DESC
 
   s.extensions << 'ext/extconf.rb'
   s.add_dependency('rake', '>= 0.7.0')
-  s.files = Dir[
-    "{lib,ext}/**/*.rb", 
-    "ext/**/*.c", 
-    "ext/**/*.h",
-    "tests/**/*.rb",
-    "README",
-    "CHANGELOG",
-    "Rakefile"]
+  s.files = Dir['{ext,lib,tests}/**/*']
   s.require_path = "lib"
   s.autorequire = "semacode"
   s.test_files = Dir["{tests}/**/*test.rb"]
-  s.extra_rdoc_files = ["README"]
 end

@@ -1,9 +1,10 @@
 require 'rubygems'
 require 'rubygems/package_task'
+require_relative 'semantic'
 
-spec = Gem::Specification.new do |s| 
+spec = Gem::Specification.new do |s|
   s.name = "semacode"
-  s.version = "0.7.4"
+  s.version = Semantic::VERSION
   s.author = "Guido Sohne"
   s.email = "guido@sohne.net"
   s.homepage = "http://sohne.net/projects/semafox/"
@@ -22,8 +23,8 @@ DESC
   s.extensions << 'ext/extconf.rb'
   s.add_dependency('rake', '>= 0.7.0')
   s.files = FileList[
-    "{lib,ext}/**/*.rb", 
-    "ext/**/*.c", 
+    "{lib,ext}/**/*.rb",
+    "ext/**/*.c",
     "ext/**/*.h",
     "tests/**/*.rb",
     "README",
@@ -32,21 +33,19 @@ DESC
   s.require_path = "lib"
   s.autorequire = "semacode"
   s.test_files = FileList["{tests}/**/*test.rb"].to_a
-  s.has_rdoc = true
-  s.extra_rdoc_files = ["README"]
 end
- 
-Gem::PackageTask.new(spec) do |pkg| 
-  pkg.need_zip = true  
+
+Gem::PackageTask.new(spec) do |pkg|
+  pkg.need_zip = true
   pkg.need_tar_gz = true
-  pkg.need_tar_bz2 = true  
+  pkg.need_tar_bz2 = true
 end
 
 task :default => "pkg/#{spec.name}-#{spec.version}.gem" do
     puts "Successfully created #{spec.name}-#{spec.version} gem"
 end
 
-if $0 == __FILE__ 
-  Gem::manage_gems 
-  Gem::Builder.new(spec).build 
-end 
+if $0 == __FILE__
+  Gem::manage_gems
+  Gem::Builder.new(spec).build
+end
